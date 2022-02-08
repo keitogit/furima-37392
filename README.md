@@ -27,10 +27,10 @@
 | description   | text   | null: false |
 | status_id        | integer | null: false |
 | shipping_cost_id | integer | null: false |
-| shipping_days_id | integer | null: false, foreign_key: true |
+| shipping_day_id | integer | null: false, foreign_key: true |
 | prefecture_id | integer | null: false, foreign_key: true |
 | category_id   | integer | null: false, foreign_key: true |
-| user_id       | references | null: false, foreign_key: true|
+| user       | references | null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -43,10 +43,11 @@
 |------------------|--------|-------------|
 | post_code        | string | null: false |
 | prefecture_id    | integer | null: false |
-| city             | string | null: false, foreign_key: true|
-| address          | string | null: false, foreign_key: true|
-| building_name    | string | foreign_key: true             |
 | phone_number     | string | null: false, foreign_key: true|
+| city             | string | null: false |
+| address          | string | null: false |
+| building_name    | string |              |
+| phone_number     | string | null: false|
 | buying_history   | references | null: false , foreign_key: true |
 
 ### Association
