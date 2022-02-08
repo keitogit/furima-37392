@@ -25,16 +25,16 @@
 | name          | string | null: false |
 | price         | integer | null: false |
 | description   | text   | null: false |
-| status        | string | null: false |
-| shipping_cost | integer | null: false |
-| shipping_days | string | null: false |
-| prefecture_id | integer | null: false |
-| category_id   | string | null: false |
-| user          | references | null: false |
+| status_id        | integer | null: false |
+| shipping_cost_id | integer | null: false |
+| shipping_days_id | integer | null: false, foreign_key: true |
+| prefecture_id | integer | null: false, foreign_key: true |
+| category_id   | integer | null: false, foreign_key: true |
+| user_id       | references | null: false, foreign_key: true|
 
 ### Association
-* has_many :users
-* has_many :destinations
+- belongs_to :user
+- has_one :buying_history
 
 
 ## destinations
@@ -47,21 +47,21 @@
 | address          | string | null: false, foreign_key: true|
 | building_name    | string | foreign_key: true             |
 | phone_number     | string | null: false, foreign_key: true|
+| buying_history   | references | null: false , foreign_key: true |
 
 ### Association
-* has many :buying_histories
+belongs_to buying_history
 
 
-## buying_history
+## buying_histories
 
 | Column          | Type   | Options     |
 |-----------------|--------|-------------|
-| purchase_id     | string | null: false |
-| purchase_date   | string | null: false |
-| purchase_source | string | null: false |
+| item    | references  | null: false , foreign_key: true |
+| user    | references  | null: false , foreign_key: true |
 
 
 ### Association
-- belongs_to :products
-- belongs_to :users
-- has_one :destinations
+- belongs_to :product
+- belongs_to :user
+- has_one :destination
