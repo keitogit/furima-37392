@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
 
   validates :name,                presence: true
-  validates :price,               presence: true, numericality: { greater_than_or_equal_to: 300 }
+  validates :price,               presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :description,         presence: true
   validates :status_id,           presence: true
   validates :shipping_cost_id,    presence: true
