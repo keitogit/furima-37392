@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   # has_one :buying_history
   has_one_attached :image
   belongs_to :user
+  has_one    :orders
 
   belongs_to :category
   belongs_to :prefecture
