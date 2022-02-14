@@ -19,7 +19,7 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form).to be_valid
       end
       it '郵便番号が「3桁＋ハイフン＋4桁」の組み合わせであれば保存できる' do
-        @order_form.post_code = '123-4560'
+        @order_form.postcode = '123-4560'
         expect(@order_form).to be_valid
       end
       it '都道府県が「---」以外かつ空でなければ保存できる' do
@@ -99,6 +99,11 @@ RSpec.describe OrderForm, type: :model do
         @order_form.phone_number = 12_345_678_910_123_111
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include('Phone number is invalid')
+      end
+      it 'トークンが空だと保存できないこと' do
+        @order_form.token = nil
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
