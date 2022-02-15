@@ -15,7 +15,7 @@
 
 ### Association
 * has_many :products
-* has_many :buying_histories
+* has_many :orders
 
 
 ## products
@@ -34,26 +34,26 @@
 
 ### Association
 - belongs_to :user
-- has_one :buying_history
+- has_one :orders
 
 
-## destinations
+## payments
 
 | Column           | Type   | Options     |
 |------------------|--------|-------------|
 | post_code        | string | null: false |
 | prefecture_id    | integer | null: false |
 | city             | string | null: false |
-| address          | string | null: false |
-| building_name    | string |              |
+| block          | string | null: false |
+| building    | string |              |
 | phone_number     | string | null: false|
-| buying_history   | references | null: false , foreign_key: true |
+| order   | references | null: false , foreign_key: true |
 
 ### Association
-belongs_to buying_history
+belongs_to :orders
 
 
-## buying_histories
+## orders
 
 | Column          | Type   | Options     |
 |-----------------|--------|-------------|
@@ -64,4 +64,4 @@ belongs_to buying_history
 ### Association
 - belongs_to :product
 - belongs_to :user
-- has_one :destination
+- has_one :payments
