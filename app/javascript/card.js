@@ -18,7 +18,6 @@ const pay = () => {
       exp_year: `20${formData.get("order_form[exp_year]")}`,
       cvc: formData.get("order_form[cvc]"),
     };
-    console.log(card);
 
     // 第一引数は15行目で定義したカード情報。第二関数はアロー関数を用いてPAYJP側からのレスポンス・ステータスコードを受け取った後の処理を定義
     Payjp.createToken(card, (status, response) => {
